@@ -1,0 +1,101 @@
+<!doctype html><html><head><link rel="stylesheet" href="/app/media/css/loader.css"/><link rel="stylesheet" id="loadCSS" href=""/><link rel="stylesheet" id="loadThemeCSS" href=""/><meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"/><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><meta name="viewport" content="width=device-width,user-scalable=no"/><title></title><link rel="icon" id="favicon" href="" type="image/x-icon"/><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/><meta http-equiv="Pragma" content="no-cache"/><meta http-equiv="Expires" content="0"/><style>.async-hide { opacity: 0 !important}</style><style id="customStyle"></style><script defer="defer" src="/build/commons1c2d299fdc5cdf9d4e3cf.js"></script><script defer="defer" src="/build/appc4507ff598112f608929.js"></script><script defer="defer" src="/build/vendor65ddb934f7beabee803d.js"></script></head><body><div id="app"></div><script>function load_scripts( urls, final_callback, index=0 )
+    {
+      if( typeof urls[index+1] === "undefined" )
+      {
+        load_script( urls[index], final_callback );
+      }
+      else
+      {
+        load_script( urls[index], function() {
+          load_scripts( urls, final_callback, index+1 );
+        });
+      }
+    }
+    
+    function load_script( url, callback )
+    {
+      var script = document.createElement( "script" );
+      script.type = "text/javascript";
+      if(script.readyState) // IE
+      {
+        script.onreadystatechange = function()
+        {
+          if ( script.readyState === "loaded" || script.readyState === "complete" )
+          {
+            script.onreadystatechange = null;
+            callback();
+          }
+        };
+      }
+      else
+      {  
+        script.onload = function() { callback(); };
+      }
+      script.src = url;
+      document.getElementsByTagName( "head" )[0].appendChild( script );
+    }
+    var finalScriptLoaded = function()
+    {
+      console.log("Script loaded");
+    }
+    var scripts = ["/app/investwellAnalytics.js", "/app/canvasjs.min.js","https://www.gateway-tt.in/assets/embed.js"];
+    window.onload = function() {
+     load_scripts( scripts, finalScriptLoaded );
+   };</script><script src="https://accounts.google.com/gsi/client" defer="defer"></script><!doctype html><html><head><link rel="stylesheet" href="/app/media/css/loader.css"/><link rel="stylesheet" id="loadCSS" href=""/><link rel="stylesheet" id="loadThemeCSS" href=""/><meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"/><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><meta name="viewport" content="width=device-width,user-scalable=no"/><title></title><link rel="icon" id="favicon" href="" type="image/x-icon"/><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/><meta http-equiv="Pragma" content="no-cache"/><meta http-equiv="Expires" content="0"/><style>.async-hide { opacity: 0 !important}</style><style id="customStyle"></style></head><body><div id="app"></div><script>function load_scripts( urls, final_callback, index=0 )
+    {
+      if( typeof urls[index+1] === "undefined" )
+      {
+        load_script( urls[index], final_callback );
+      }
+      else
+      {
+        load_script( urls[index], function() {
+          load_scripts( urls, final_callback, index+1 );
+        });
+      }
+    }
+    
+    function load_script( url, callback )
+    {
+      var script = document.createElement( "script" );
+      script.type = "text/javascript";
+      if(script.readyState) // IE
+      {
+        script.onreadystatechange = function()
+        {
+          if ( script.readyState === "loaded" || script.readyState === "complete" )
+          {
+            script.onreadystatechange = null;
+            callback();
+          }
+        };
+      }
+      else
+      {  
+        script.onload = function() { callback(); };
+      }
+      script.src = url;
+      document.getElementsByTagName( "head" )[0].appendChild( script );
+    }
+    var finalScriptLoaded = function()
+    {
+      console.log("Script loaded");
+    }
+    var scripts = ["/app/investwellAnalytics.js", "/app/canvasjs.min.js","https://www.gateway-tt.in/assets/embed.js"];
+    window.onload = function() {
+     load_scripts( scripts, finalScriptLoaded );
+   };</script><script src="https://accounts.google.com/gsi/client" defer="defer"></script><script defer="defer">(function(h,o,t,j,a,r){
+      h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+      h._hjSettings={hjid:2459651,hjsv:6};
+      a=o.getElementsByTagName('head')[0];
+      r=o.createElement('script');r.async=1;
+      r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+      a.appendChild(r);
+      })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');</script><script defer="defer" src="/app/uiCollection/shared/tinymce/tinymce.min.js?v=6"></script></body></html><script defer="defer">(function(h,o,t,j,a,r){
+      h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+      h._hjSettings={hjid:2459651,hjsv:6};
+      a=o.getElementsByTagName('head')[0];
+      r=o.createElement('script');r.async=1;
+      r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+      a.appendChild(r);
+      })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');</script><script defer="defer" src="/app/uiCollection/shared/tinymce/tinymce.min.js?v=6"></script></body></html>
