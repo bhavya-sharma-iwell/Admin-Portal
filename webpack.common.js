@@ -4,7 +4,7 @@ const NodePolyfillPlugin = require("node-polyfill-webpack-plugin")
 
 module.exports = {
     entry: {
-        'app': './app/index.js',
+        'app': './app/index.jsx',
         'vendor': ['react', 'redux', 'react-dom', 'react-router', 'react-router-dom', 'react-redux', 'axios', 'react-loadable', 'moment', 'prop-types', 'redux-form', 'redux-logger', 'redux-promise-middleware', 'redux-thunk',
             'react-autosuggest', 'react-color', 'react-copy-to-clipboard', 'react-cropper', 'react-datetime',
             'react-modal', 'react-timekeeper', 'react-widgets', 'recharts', 'tinymce', 'nouislider', 'react-lazy-load-image-component'],
