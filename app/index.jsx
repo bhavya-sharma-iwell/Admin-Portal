@@ -1,11 +1,10 @@
 
 import React from 'react'
-import App from './app'
+import App from './app.jsx'
 import * as Sentry from "@sentry/react";
 import { BrowserTracing } from "@sentry/tracing";
 import { createRoot } from 'react-dom/client';
 
-console.log('*********** hiiiii', app)
 
 if (process.env.NODE_ENV == 'production') {
 
@@ -35,5 +34,4 @@ if (process.env.NODE_ENV == 'production') {
 }
 const app = document.getElementById('root')
 const root = createRoot(app);
-console.log("******************",root)
 root.render( <App />)
