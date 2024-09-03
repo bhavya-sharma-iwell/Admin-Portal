@@ -4,7 +4,7 @@ const NodePolyfillPlugin = require("node-polyfill-webpack-plugin")
 
 module.exports = {
     entry: {
-        'app': './app/index.jsx',
+        'app': './adminApp/index.jsx',
         'vendor': ['react', 'redux', 'react-dom', 'react-router', 'react-router-dom', 'react-redux', 'axios', 'react-loadable', 'moment', 'prop-types', 'redux-form', 'redux-logger', 'redux-promise-middleware', 'redux-thunk',
             'react-autosuggest', 'react-color', 'react-copy-to-clipboard', 'react-cropper', 'react-datetime',
             'react-modal', 'react-timekeeper', 'react-widgets', 'recharts', 'tinymce', 'nouislider', 'react-lazy-load-image-component'],
@@ -24,7 +24,7 @@ module.exports = {
     plugins: [
         new NodePolyfillPlugin(),
         new HtmlWebpackPlugin({
-            template: './app/template/index.html',
+            template: './adminApp/template/index.html',
             minify: {
                 collapseWhitespace: true,
                 keepClosingSlash: true,
@@ -66,7 +66,7 @@ module.exports = {
         ],
         extensions: ['.js', '.jsx'],
         alias: {
-            css: 'app/media/css'
+            css: 'adminApp/media/css'
         },
         fallback: {
             "crypto": require.resolve('crypto-browserify'),
