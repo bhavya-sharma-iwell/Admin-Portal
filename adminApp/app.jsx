@@ -3,7 +3,7 @@ import React from "react";
 const App = () => {
   return (
     <div>
-      KickStart FE
+      Admin Portal is running...
     </div>
   );
 };
