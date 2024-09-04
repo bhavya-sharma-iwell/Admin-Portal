@@ -6,7 +6,7 @@ import reducer from './reducer';
 import * as Sentry from '@sentry/react';
 
 // Sentry Redux Enhancer
-// const sentryReduxEnhancer = Sentry.createReduxEnhancer();
+const sentryReduxEnhancer = Sentry.createReduxEnhancer();
 
 // Middleware setup
 const middleware = (getDefaultMiddleware) => {
@@ -31,6 +31,9 @@ const rootReducer = (state, action) => {
 const store = configureStore({
   reducer: rootReducer,
   middleware,
+  enhancers: (getDefaultEnhancers) => {
+    return getDefaultEnhancers().concat(sentryReduxEnhancer);
+  }
 });
 
 window.store = store;
