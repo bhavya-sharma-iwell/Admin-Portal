@@ -4,7 +4,8 @@ import App from './app.jsx'
 import * as Sentry from "@sentry/react";
 import { BrowserTracing } from "@sentry/tracing";
 import { createRoot } from 'react-dom/client';
-
+import store from './redux/store.js';
+import { Provider } from 'react-redux';
 
 if (process.env.NODE_ENV == 'production') {
 
@@ -34,4 +35,4 @@ if (process.env.NODE_ENV == 'production') {
 }
 const rootElement = document.getElementById('root')
 const root = createRoot(rootElement);
-root.render( <App />)
+root.render(<Provider store = {store}><App/></Provider>)
