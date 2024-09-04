@@ -32,6 +32,6 @@ if (process.env.NODE_ENV == 'production') {
         }
     });
 }
-const app = document.getElementById('root')
-const root = createRoot(app);
+const rootElement = document.getElementById('root')
+const root = createRoot(rootElement);
 root.render( <App />)
