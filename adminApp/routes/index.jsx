@@ -179,7 +179,6 @@ import { getUserData } from '../redux/userSlice';
   
 
 const AdminInfoRoutes =  () =>{
-  console.log('*****************222222222222*')
     return (
       <BrowserRouter>
         <Routes>

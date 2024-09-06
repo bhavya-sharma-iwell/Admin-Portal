@@ -20,6 +20,7 @@ class AuthenticateUser extends React.Component {
   }
 
   UNSAFE_componentWillMount() {
+    console.log("&&&&&&&&&&&&&&&&&&&&&")
     const { dispatch, currentURL,lastApiCallTime } = this.props;
     let lastApiCall
     let websiteAndCustomUrl= ((this.props.userTheme && (this.props.userTheme.website && this.props.userTheme.allowSSOLogin == 1)) && this.props.ssoToken) ? this.props.userTheme.website : this.props.userTheme &&this.props.userTheme.customURL
@@ -103,10 +104,10 @@ class AuthenticateUser extends React.Component {
 function mapStateToProps(state, ownProps) {
   return {
     currentURL: ownProps.location&&ownProps.location.pathname,
-    lastApiCallTime: state.userReducer.lastApiCallTime,
-    user:state.userReducer.user,
-    userdata :state.userReducer,
-    ssoToken :state.userReducer && state.userReducer.SSOuser && state.userReducer.SSOuser.SSOToken,
+    lastApiCallTime: state.commonActionReducer.lastApiCallTime,
+    user:state.user,
+    userdata :state,
+    ssoToken : state.SSOuser && state.SSOuser.SSOToken,
     sessionTimeOutFlag: state.dashboardReducer.sessionTimeOut,
   }
 }

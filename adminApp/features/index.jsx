@@ -16,7 +16,6 @@ import getUserData from '../redux/userSlice'
 export class Admin extends Component{
     constructor(props){
         super(props);
-        console.log('****************44444444441*')
         this.state = {currentStatus: 'true', sessionStatus: 'true',
                       leftSidebarFlag:false,selectedTab:{},selectedSubTab:{},
                       openMainTabFlag:true,
