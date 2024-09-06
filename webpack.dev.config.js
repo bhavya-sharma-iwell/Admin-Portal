@@ -4,8 +4,8 @@ const common = require('./webpack.common.js')
 module.exports = merge(common, {
   mode: 'development',
   output: {
-    path: path.resolve(__dirname, 'build'),
-    publicPath: '/build/',
+    path: path.resolve(__dirname, 'adminAppBuild'),
+    publicPath: '/adminAppBuild/',
     filename: '[name][contenthash].js',
     chunkFilename: '[name][contenthash].js'
   },

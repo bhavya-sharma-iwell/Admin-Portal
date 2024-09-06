@@ -33,7 +33,7 @@ const userSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(GETT, (state) => {
+      .addCase(getUserData.pending, (state) => {
         state.loginFail = false;
       })
       .addCase(getUserData.fulfilled, (state, action) => {
@@ -47,4 +47,5 @@ const userSlice = createSlice({
   }
 });
 
+// Export reducer
 export default userSlice.reducer;

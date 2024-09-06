@@ -45,7 +45,7 @@ module.exports = {
         }),
         new CopyWebpackPlugin({
             patterns: [
-                { from: 'build/index.html', to: path.resolve(__dirname, 'index.html') }
+                { from: 'adminAppBuild/index.html', to: path.resolve(__dirname, 'index.html') }
             ]
         })
     ],
