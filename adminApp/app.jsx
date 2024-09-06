@@ -1,25 +1,22 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import User from './user'
+import React, { Fragment } from 'react';
+import Cookie from './utils/Cookie';
+import AuthenticateUser from './utils/Auth'
+import SetPageTitle from './utils/setPageTitle'
+import Admin from './features';
+import {connect} from 'react-redux'
+import AdminInfoRoutes from './routes';
 
-const Admin = () => <div>Admin </div>;
-const About = () => <div>About</div>;
-const Home = () => <div>Home Page</div>;
-const SideBar = () => <div>SideBar Page     <Router>
-  <Routes>
-    <Route path="/adminApp/about" element={<User />} />
-    <Route path="/" element={<Home />} />
-  </Routes>
-</Router>
-</div>;
+const App = (props) => {
+  console.log('*****************111111111111*')
 
-const App = () => {
   return (
-    <>
-      <SideBar />
-
-    </>
+    <Fragment>
+    <AdminInfoRoutes />
+      {/* <Admin />
+      {Cookie.getCookie('c_ux') && <AuthenticateUser onChange={p => SetPageTitle(p)}>
+        <Admin />
+      </AuthenticateUser>} */}
+    </Fragment>
   );
 };
-
 export default App;

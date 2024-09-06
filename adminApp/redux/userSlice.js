@@ -15,7 +15,7 @@ export const getUserData = createAsyncThunk(
   'user/getUserData',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.get('/api/auth/getLoggedInUser');
+      const response = await axios({method:'GET',url:'/api/auth/getLoggedInUser',param:{}});
       if (response.status === 200) {
         return response.data.result; 
       } else {
@@ -41,6 +41,7 @@ const userSlice = createSlice({
         state.loggedIn = true;
       })
       .addCase(getUserData.rejected, (state, action) => {
+        console.log("********************************",state,action)
         state.user = { errorMsg: action.payload };
         state.loginFail = true;
       });
