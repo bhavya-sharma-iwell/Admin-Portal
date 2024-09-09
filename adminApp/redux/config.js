@@ -9,7 +9,6 @@ import {CHECK_FOR_MAINTAINANCE} from 'adminApp/constants'
 export const config = function(store){
   var setIntervalId;
   var onGoingApiCallCount = 0;
-  
   let addClientIdToRequestParam = (param={}) =>{
   	let obj = param;
   	let uid = SessionData.parseAndGetItem('uid');
