@@ -128,7 +128,7 @@ export const deleteReversals = createAsyncThunk(
   }
 );
 export const deleteTxn = createAsyncThunk(
-  'searchSoa/deleteReversals',
+  'searchSoa/deleteTxn',
   async (_, { rejectWithValue }) => {
     try {
       dispatch(COMPONENT_LOADER_DELETE_TXN(param.componentForLoader));
