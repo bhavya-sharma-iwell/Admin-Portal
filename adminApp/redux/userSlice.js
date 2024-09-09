@@ -15,7 +15,7 @@ export const getUserData = createAsyncThunk(
   'user/getUserData',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.get('/api/auth/getLoggedInUser');
+      const response = await axios({method:'GET',url:'/api/auth/getLoggedInUser',param:{}});
       if (response.status === 200) {
         return response.data.result; 
       } else {

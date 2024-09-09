@@ -6,6 +6,7 @@ import { BrowserTracing } from "@sentry/tracing";
 import { createRoot } from 'react-dom/client';
 import store from './redux/store.js';
 import { Provider } from 'react-redux';
+import config from './redux/config'
 
 if (process.env.NODE_ENV == 'production') {
 
@@ -33,6 +34,7 @@ if (process.env.NODE_ENV == 'production') {
         }
     });
 }
+config(store)
 const rootElement = document.getElementById('root')
 const root = createRoot(rootElement);
 root.render(<Provider store = {store}><App/></Provider>)
