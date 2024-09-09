@@ -1,5 +1,5 @@
 import React,{useEffect} from 'react'
-import { BrowserRouter,Route, Routes, Link } from "react-router-dom"
+import { BrowserRouter,Route, Routes } from "react-router-dom"
 import { useDispatch } from 'react-redux';
 import { getUserData } from '../redux/userSlice';
 // import Loader from 'app/components/loaders'
@@ -159,32 +159,21 @@ import { getUserData } from '../redux/userSlice';
 // })
 
 
-  const About = () => (
-    <>
-      <div>About PAGE</div>
-      <Link to='/adminApp/home'>MY home</Link>
-    </>
-  );
-
-  const Home = () => {
+  const About = () => {
     const dispatch = useDispatch();
     
     useEffect(() => {
-      console.log('Home component mounted');
       dispatch(getUserData());
     }, []);
     
-    return <div>Home Page</div>;
+    return <div>About Page</div>;
   };
-  
 
 const AdminInfoRoutes =  () =>{
-  console.log('*****************222222222222*')
     return (
       <BrowserRouter>
         <Routes>
             <Route path="/adminApp/about" element={<About />} />
-            <Route path="/adminApp/home" element={<Home />} />
         </Routes>
       </BrowserRouter>
   )

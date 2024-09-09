@@ -42,10 +42,9 @@ export const config = function(store){
 	axios.interceptors.request.use(function(config) {
 
 		if(config && config.url){
-			console.log("*********************000000000***********",config)
 			config.url = config.url.replace('/api/', '/webapi/')
 		}
-		let userReducer = store.getState() && store.getState().userReducer
+		let userReducer = store.getState() && store.getState().user
 		let urlFounded = commonConst.URL_ARRAY.find((obj)=>{
 			if(config.url == obj.url){
 				return true
@@ -57,7 +56,7 @@ export const config = function(store){
 		let currentState = store.getState();
 		onGoingApiCallCount++
 
-		if(currentState.userReducer.user&&currentState.userReducer.user.userType !="client"){
+		if(currentState.user.user&&currentState.user.user.userType !="client"){
 			if(config.data){
 				config.data = addClientIdToRequestParam(config.data) 
 			}

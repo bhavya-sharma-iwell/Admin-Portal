@@ -22,11 +22,11 @@ export class ProfileStrip extends React.Component{
 	}
 
 	componentDidMount() {
-		if ((this.props.user.userType == 'broker')) {
-			this.setState({
-				showOnlyBroker: true
-			})
-		}
+		// if ((this.props.user.userType == 'broker')) {
+		// 	this.setState({
+		// 		showOnlyBroker: true
+		// 	})
+		// }
 	}
 
 	addRemoveClass(showHide)
@@ -67,28 +67,28 @@ export class ProfileStrip extends React.Component{
 			}
 			this.setState({utilityDirectory});
 		}
-		if (newProps.getUserInfo.data && newProps.getUserInfo.data.levelNo != 1 && this.state.showOnlyBroker) {
-			this.setState({
-				showOnlyBroker: false
-			})
-		}
-		if(!this.state.apiCall && this.props.userType == 'client' && dependencyCheck(newProps.getUserInfo, 'data.uid')){
-			let params = {}
-			params.investorUid = dependencyCheck(newProps.getUserInfo, 'data.uid')
-			// this.props.dispatch(GetClientInformation(params))
-			this.setState({ apiCall: true })
-		}
-		if(this.state.downloadImg && (  (newProps.getClientInfo != this.props.getClientInfo) && dependencyCheck(newProps.getUserInfo, 'data.uid') ) ){
-			let profileImage =  newProps.getClientInfo && newProps.getClientInfo.profileImage
-			this.setState({
-				downloadImg : false,
-			})
-			let param = {}
-			param.uid =  dependencyCheck(newProps.getUserInfo, 'data.uid')
-			param.fileName = profileImage
-			param.isExternal = 1
-			this.downloadPreview(param)
-		}
+		// if (newProps.getUserInfo.data && newProps.getUserInfo.data.levelNo != 1 && this.state.showOnlyBroker) {
+		// 	this.setState({
+		// 		showOnlyBroker: false
+		// 	})
+		// }
+		// if(!this.state.apiCall && this.props.userType == 'client' && dependencyCheck(newProps.getUserInfo, 'data.uid')){
+		// 	let params = {}
+		// 	params.investorUid = dependencyCheck(newProps.getUserInfo, 'data.uid')
+		// 	// this.props.dispatch(GetClientInformation(params))
+		// 	this.setState({ apiCall: true })
+		// }
+		// if(this.state.downloadImg && (  (newProps.getClientInfo != this.props.getClientInfo) && dependencyCheck(newProps.getUserInfo, 'data.uid') ) ){
+		// 	let profileImage =  newProps.getClientInfo && newProps.getClientInfo.profileImage
+		// 	this.setState({
+		// 		downloadImg : false,
+		// 	})
+		// 	let param = {}
+		// 	param.uid =  dependencyCheck(newProps.getUserInfo, 'data.uid')
+		// 	param.fileName = profileImage
+		// 	param.isExternal = 1
+		// 	this.downloadPreview(param)
+		// }
 	}
 	
 	getImageSource(fileObject){
@@ -131,74 +131,74 @@ export class ProfileStrip extends React.Component{
 		//window.location.reload(true)
 		location.reload()
 	}
-	getUserProfileImg(userName){
-		let profileIcon
-		let profileImg = this.props.previewDownload && this.props.previewDownload.profile
-		if((this.props.getClientInfo && this.props.getClientInfo.profileImage) && !this.state.showOnlyBroker){
-			profileIcon = <Fragment>{(this.props.profileLoader && this.props.profileLoader.componentName =='profileLoader')&&
-			<Loader 
-			  loaderType = 'line'
-			  loaderWidth = { LOADER_WIDTH[2].width }
-			  loaderHeight = {LOADER_WIDTH[2].height }
-			/>}<img src={this.getImageSource(profileImg)} /></Fragment>
-		}else{
-		profileIcon = userName && userName.substring(0,2)
+	// getUserProfileImg(userName){
+	// 	let profileIcon
+	// 	let profileImg = this.props.previewDownload && this.props.previewDownload.profile
+	// 	if((this.props.getClientInfo && this.props.getClientInfo.profileImage) && !this.state.showOnlyBroker){
+	// 		profileIcon = <Fragment>{(this.props.profileLoader && this.props.profileLoader.componentName =='profileLoader')&&
+	// 		<Loader 
+	// 		  loaderType = 'line'
+	// 		  loaderWidth = { LOADER_WIDTH[2].width }
+	// 		  loaderHeight = {LOADER_WIDTH[2].height }
+	// 		/>}<img src={this.getImageSource(profileImg)} /></Fragment>
+	// 	}else{
+	// 	profileIcon = userName && userName.substring(0,2)
  
-		}
-		return profileIcon
-	}
+	// 	}
+	// 	return profileIcon
+	// }
 
-	currentDirectory(){
-		let currentDirectory='';
-		const { setSelectedTab, addViewActionType, allowedFeatureList } = this.props;
-		let selectedFeature = addViewActionType && addViewActionType.featureNo
-		if (setSelectedTab && setSelectedTab.parentTab && setSelectedTab.parentTab.label) {
-			// Tab Labeling As Per BE response (Parent Tab / Child Tab)
-			if (allowedFeatureList) {
-				if (setSelectedTab.childTab && setSelectedTab.parentTab.featureNo && selectedFeature) {
-					currentDirectory = `${allowedFeatureList[setSelectedTab.parentTab.featureNo] && allowedFeatureList[setSelectedTab.parentTab.featureNo].label} / ${allowedFeatureList[selectedFeature] && allowedFeatureList[selectedFeature].label}`
-				} else if (setSelectedTab.parentTab.isLink && setSelectedTab.parentTab.isSubOption && setSelectedTab.parentTab.featureNo) {
-					currentDirectory = allowedFeatureList[setSelectedTab.parentTab.featureNo] && allowedFeatureList[setSelectedTab.parentTab.featureNo].label;
-				} else {
-					currentDirectory = selectedFeature && allowedFeatureList[selectedFeature] && allowedFeatureList[selectedFeature].label;
-				}
-			} else {
-				// For Admin Tab Labeling (Parent Tab / Child Tab)
-				if (setSelectedTab.parentTab && setSelectedTab.childTab) {
-					currentDirectory = setSelectedTab.parentTab.label + " / " + setSelectedTab.childTab.label;
-				} else {
-					currentDirectory = setSelectedTab.parentTab && setSelectedTab.parentTab.label;
-				}
-			}
-		}
-		return currentDirectory
-	}
+	// currentDirectory(){
+	// 	let currentDirectory='';
+	// 	const { setSelectedTab, addViewActionType, allowedFeatureList } = this.props;
+	// 	let selectedFeature = addViewActionType && addViewActionType.featureNo
+	// 	if (setSelectedTab && setSelectedTab.parentTab && setSelectedTab.parentTab.label) {
+	// 		// Tab Labeling As Per BE response (Parent Tab / Child Tab)
+	// 		if (allowedFeatureList) {
+	// 			if (setSelectedTab.childTab && setSelectedTab.parentTab.featureNo && selectedFeature) {
+	// 				currentDirectory = `${allowedFeatureList[setSelectedTab.parentTab.featureNo] && allowedFeatureList[setSelectedTab.parentTab.featureNo].label} / ${allowedFeatureList[selectedFeature] && allowedFeatureList[selectedFeature].label}`
+	// 			} else if (setSelectedTab.parentTab.isLink && setSelectedTab.parentTab.isSubOption && setSelectedTab.parentTab.featureNo) {
+	// 				currentDirectory = allowedFeatureList[setSelectedTab.parentTab.featureNo] && allowedFeatureList[setSelectedTab.parentTab.featureNo].label;
+	// 			} else {
+	// 				currentDirectory = selectedFeature && allowedFeatureList[selectedFeature] && allowedFeatureList[selectedFeature].label;
+	// 			}
+	// 		} else {
+	// 			// For Admin Tab Labeling (Parent Tab / Child Tab)
+	// 			if (setSelectedTab.parentTab && setSelectedTab.childTab) {
+	// 				currentDirectory = setSelectedTab.parentTab.label + " / " + setSelectedTab.childTab.label;
+	// 			} else {
+	// 				currentDirectory = setSelectedTab.parentTab && setSelectedTab.parentTab.label;
+	// 			}
+	// 		}
+	// 	}
+	// 	return currentDirectory
+	// }
 	showWidget() {
 		this.props.dispatch({ type: 'WHATS_NEW_POP_STORAGE', payload: { showWhatsNewPopup: true } })
 		// this.props.dispatch(getTopics())
 	}
 	render(){
-		let userName = ((this.props.getUserInfo.data && this.props.getUserInfo.data.name)||(this.props.user&& this.props.user.name))
-		let companyName = this.props.user&& this.props.user.compName
+		// let userName = ((this.props.getUserInfo.data && this.props.getUserInfo.data.name)||(this.props.user&& this.props.user.name))
+		// let companyName = this.props.user&& this.props.user.compName
 		return(	
 		<Fragment>
 		<div class="profile-header">
 			<i class="slide-icon" onClick={this.props.toggleLeftSidebar} metatitle = {this.props.metatitle ? `${this.props.metatitle}SlideIcon` : ''}></i>
 			<h2 class="head-label">
-				{this.currentDirectory()}
+				{/* {this.currentDirectory()} */}
 			</h2>
 
 			<div class={`navOptsMenu withShortName ${this.state.open == 1 ? ' open':''}`} onClick={(stateVal) => this.addRemoveClass('1')} metatitle = {this.props.metatitle ? `${this.props.metatitle}UsrProfileImg` : ''}>
-				{this.getUserProfileImg(userName)}
+				{/* {this.getUserProfileImg(userName)} */}
 			</div>
 			<ul class={`topLinksContainers right borderRgtNone  ${this.state.showOnlyBroker ? '' : 'shiftedOnTop'}`}>
 				<li class="userNameOpts mView">
-				{maskUserData(userName,'name',this.props.clientDataMasked)}
+				{/* {maskUserData(userName,'name',this.props.clientDataMasked)} */}
 				</li>
 				{this.state.showOnlyBroker && <Fragment>
-					{this.props.user.levelNo == 1 && <li class="optionalIcon setting" onClick={()=> this.closeUserBox()}>
+					{/* {this.props.user.levelNo == 1 && <li class="optionalIcon setting" onClick={()=> this.closeUserBox()}>
 						<a href="#/broker/accountSettings" metatitle = 'feature16'>Settings</a>
-					</li>}
+					</li>} */}
 
 					{this.state.domainNameChecked &&
 					<Fragment>
@@ -211,7 +211,9 @@ export class ProfileStrip extends React.Component{
 					</Fragment>
 					}
 					<li class="optionalIcon subMenu">
-						<a href="javascript:void(0)" onClick={(stateVal) => this.addRemoveClass('1')} metatitle='username'>{userName}</a>
+						<a href="javascript:void(0)" onClick={(stateVal) => this.addRemoveClass('1')} metatitle='username'>
+							{/* {userName} */}
+							</a>
 						{this.state.open == 1 && <Fragment>
 							<ul>
 								<li class="subIcon user">
@@ -237,13 +239,13 @@ export class ProfileStrip extends React.Component{
 					<li class="optionalIcon subMenu">
 						<a href="javascript:void(0)" class="widthProfileImg" onClick={(stateVal) => this.addRemoveClass('1')} metatitle = {this.props.metatitle ? `${this.props.metatitle}UserProfileName` : ''}>
 							<span class="navOptsMenu withShortName displayInlineBlock ">
-								{this.getUserProfileImg(userName)}
+								{/* {this.getUserProfileImg(userName)} */}
 							</span>
-							{maskUserData(userName,'name',this.props.clientDataMasked)}
+							{/* {maskUserData(userName,'name',this.props.clientDataMasked)} */}
 						</a>
 						{this.state.open == 1 && <Fragment>
 							<ul class="defaultDropDown">
-								{this.props.showMaskingOption && this.props.user && (this.props.user.userType == 'broker') &&
+								{/* {this.props.showMaskingOption && this.props.user && (this.props.user.userType == 'broker') &&
 									<li class="optionalIcon maskDataIcon">
 										<a onClick={() => this.props.handleDataMasking(`${this.props.clientDataMasked ? 'setMaskingFlag' : 'showMaskingAlert'}` ,!this.props.clientDataMasked)}>{`${this.props.clientDataMasked ? 'Unmask Data' : 'Mask Data'}`}</a>
 									</li>
@@ -254,7 +256,7 @@ export class ProfileStrip extends React.Component{
 								{this.props.user && this.props.user.userType == 'client' && 
 								<li class="optionalIcon changePassword">
                                     <a onClick={() => this.props.showHidePopup('open')}>Change Password</a>
-                                </li>}
+                                </li>} */}
 								<li class="optionalIcon logOut">
 									<a onClick={() => this.props.logoutUser()} metatitle = {this.props.metatitle ? `${this.props.metatitle}Logout` : ''}>Logout</a>
 								</li>
