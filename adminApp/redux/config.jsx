@@ -9,7 +9,7 @@ import {CHECK_FOR_MAINTAINANCE} from 'adminApp/constants'
 export const config = function(store){
   var setIntervalId;
   var onGoingApiCallCount = 0;
-  
+
   let addClientIdToRequestParam = (param={}) =>{
   	let obj = param;
   	let uid = SessionData.parseAndGetItem('uid');
@@ -174,7 +174,7 @@ export const config = function(store){
 		if(error.status==401 || error == errorStatus)
 		{
 			alert('Please clear your cookies/cache from browser, if you are facing trouble with the application')
-			// store.dispatch(logout());
+			store.dispatch(logout());
 			window.location = "#/login"
 			location.reload();
 		}
