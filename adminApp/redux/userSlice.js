@@ -41,7 +41,6 @@ const userSlice = createSlice({
         state.loggedIn = true;
       })
       .addCase(getUserData.rejected, (state, action) => {
-        console.log("********************************",state,action)
         state.user = { errorMsg: action.payload };
         state.loginFail = true;
       });
