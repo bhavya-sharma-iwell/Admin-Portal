@@ -7,7 +7,8 @@ const initialState = {
   refreshKey: null,
   checkForMaintainance: false,
   recaptchaToken: null,
-  addViewActionType:null
+  addViewActionType:null,
+  sessionTimeOut:false
 };
 
 const commonReducerSlice = createSlice({
@@ -32,6 +33,9 @@ const commonReducerSlice = createSlice({
     ADD_VIEW_ACTION: (state, action) => {
         state.addViewActionType = action.payload;
     },
+    SESSION_TIMEOUT_FLAG: (state, action) => {
+      state.sessionTimeOut = action.payload;
+  },
   },
 });
 
@@ -41,7 +45,8 @@ export const {
   ADD_REFRESH_KEY,
   CHECK_FOR_MAINTAINANCE,
   SAVE_RECAPTCHA_TOKEN,
-  ADD_VIEW_ACTION
+  ADD_VIEW_ACTION,
+  SESSION_TIMEOUT_FLAG
 } = commonReducerSlice.actions;
 
 export default commonReducerSlice.reducer;

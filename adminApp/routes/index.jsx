@@ -2,6 +2,7 @@ import React,{useEffect} from 'react'
 import { BrowserRouter,Route, Routes } from "react-router-dom"
 import { useDispatch } from 'react-redux';
 import { getUserData } from '../redux/userSlice';
+import SearchSoa from '../features/searchSoa';
 // import Loader from 'app/components/loaders'
 // import { USER_TYPE } from 'app/constants'
 // import { LOADER_WIDTH } from 'app/constants/shared/commonConst'
@@ -174,6 +175,7 @@ const AdminInfoRoutes =  () =>{
       <BrowserRouter>
         <Routes>
             <Route path="/adminApp/about" element={<About />} />
+            <Route path="/searchSoa" element={<SearchSoa />} />
         </Routes>
       </BrowserRouter>
   )

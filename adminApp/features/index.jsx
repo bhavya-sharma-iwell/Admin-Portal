@@ -119,7 +119,7 @@ export class Admin extends Component{
             <ErrorBoundary>
             <div id="hideAfterLoad" style={{width:'100%', height:'100%',background:'white',position:'fixed',left:'0',top:'0', zIndex:'99999'}}>Loading...</div>   
              {
-            //  this.props.loginStore && this.props.loginStore.loaderLogout && this.props.loginStore.loaderLogout.componentName == 'logout' &&
+             this.props.loginStore && this.props.loginStore.loaderLogout && this.props.loginStore.loaderLogout.componentName == 'logout' &&
                 <Loader 
                     loaderType = 'line'
                     loaderWidth = { LOADER_WIDTH[2].width }
@@ -162,14 +162,11 @@ export class Admin extends Component{
 }
 
 
-// const mapStateToProps = (state) => {
-//     return {
-//       userTheme: state.userReducer.theme,
-//       sessionTimeOutFlag: state.dashboardReducer.sessionTimeOut,
-//       firstLoginInfo : state.userReducer,
-//       loginStore: state.userReducer
-//     }
-// }
+const mapStateToProps = (state) => {
+    return {
+      firstLoginInfo : state.user,
+      loginStore: state.user
+    }
+}
 
-// export default connect(mapStateToProps,) (Admin);
-export default Admin
+export default connect(mapStateToProps,) (Admin);

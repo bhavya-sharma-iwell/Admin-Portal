@@ -2,7 +2,6 @@ import React , {Fragment} from 'react';
 import {UTIL} from 'adminApp/constants'
 import * as commonConst from 'adminApp/constants'
 import { EncryptData } from 'adminApp/utils/encryption'
-import { KYC_NOT_VERIFIED } from 'adminApp/constants'
 import moment from 'moment-timezone'
 
 export const NumberFormater = (num) =>{

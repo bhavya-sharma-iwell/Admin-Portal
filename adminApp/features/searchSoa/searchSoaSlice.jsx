@@ -1,11 +1,12 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { COMPONENT_LOADER_FOLIO_ID_DATA,COMPONENT_LOADER_AUM_DELETE_FOLIO_TXNS, COMPONENT_LOADER_DELETE_TXN} from './features/commonReducerSlice';
+import { COMPONENT_LOADER_FOLIO_ID_DATA,COMPONENT_LOADER_AUM_DELETE_FOLIO_TXNS, COMPONENT_LOADER_DELETE_TXN} from '../../redux/commonLoaderSlice';
 import axios from 'axios';
 
 // Define initial state
 const initialState = {
   searchFolioNumData:{ apiStatus: 1, data: null, errorMsg: null },
   loaderSearchFolio: false,
+  searchFolioIdData:{ apiStatus: 1, data: null, errorMsg: null },
   notification:null,
   errorMsg:null,
   deletingTxn:null,
@@ -16,12 +17,12 @@ const initialState = {
 };
 
 // Define asynchronous thunk action
-export const getFolioData = createAsyncThunk(
-  'searchSoa/getFolioData',
-  async (_, { rejectWithValue }) => {
+export const getSearchFolioIdData = createAsyncThunk(
+  'searchSoa/getSearchFolioIdData',
+  async (params, { rejectWithValue,dispatch }) => {
     try {
-      dispatch(COMPONENT_LOADER_FOLIO_ID_DATA(param.componentForLoader));
-      const response = await axios({method:'GET',url:'/api/admin/getFolioData',params:{}});
+      dispatch(COMPONENT_LOADER_FOLIO_ID_DATA(params.componentForLoader));
+      const response = await axios({method:'GET',url:'/api/admin/getFolioData',params});
       if (response.status == 0) {
         dispatch(COMPONENT_LOADER_FOLIO_ID_DATA(null));
         return response.result; 
@@ -37,15 +38,12 @@ export const getFolioData = createAsyncThunk(
 
 export const getSearchSoaData = createAsyncThunk(
   'searchSoa/getSearchSoaData',
-  async (_, { rejectWithValue }) => {
+  async (params, { rejectWithValue,dispatch }) => {
     try {
-      dispatch(COMPONENT_LOADER_FOLIO_ID_DATA(param.componentForLoader));
-      const response = await axios({method:'GET',url:'/api/admin/getSOA',params:{}});
+      const response = await axios({method:'GET',url:'/api/admin/getSOA',params});
       if (response.status == 0) {
-        dispatch(COMPONENT_LOADER_FOLIO_ID_DATA(null));
         return response.result; 
       } else {
-        dispatch(COMPONENT_LOADER_FOLIO_ID_DATA(null));
         return rejectWithValue(response.message);
       }
     } catch (err) {
@@ -56,9 +54,9 @@ export const getSearchSoaData = createAsyncThunk(
 
 export const unFreezeFolios = createAsyncThunk(
   'searchSoa/unFreezeFolios',
-  async (_, { rejectWithValue }) => {
+  async (data, { rejectWithValue,dispatch }) => {
     try {
-      dispatch(COMPONENT_LOADER_AUM_DELETE_FOLIO_TXNS(param.componentForLoader));
+      dispatch(COMPONENT_LOADER_AUM_DELETE_FOLIO_TXNS(data.componentForLoader));
       const response = await axios({method:'POST',url:'/api/admin/unfreezeFolios',data});
       if (response.status == 0) {
         dispatch(COMPONENT_LOADER_AUM_DELETE_FOLIO_TXNS(null));
@@ -74,9 +72,9 @@ export const unFreezeFolios = createAsyncThunk(
 );
 export const TouchFolios = createAsyncThunk(
   'searchSoa/TouchFolios',
-  async (_, { rejectWithValue }) => {
+  async (data, { rejectWithValue,dispatch }) => {
     try {
-      dispatch(COMPONENT_LOADER_AUM_DELETE_FOLIO_TXNS(param.componentForLoader));
+      dispatch(COMPONENT_LOADER_AUM_DELETE_FOLIO_TXNS(data.componentForLoader));
       const response = await axios({method:'POST',url:'/api/admin/touchFoliosList',data});
       if (response.status == 0) {
         dispatch(COMPONENT_LOADER_AUM_DELETE_FOLIO_TXNS(null));
@@ -92,9 +90,9 @@ export const TouchFolios = createAsyncThunk(
 );
 export const freezeFolios = createAsyncThunk(
   'searchSoa/freezeFolios',
-  async (_, { rejectWithValue }) => {
+  async (data, { rejectWithValue,dispatch }) => {
     try {
-      dispatch(COMPONENT_LOADER_AUM_DELETE_FOLIO_TXNS(param.componentForLoader));
+      dispatch(COMPONENT_LOADER_AUM_DELETE_FOLIO_TXNS(data.componentForLoader));
       const response = await axios({method:'POST',url:'/api/admin/updateFolios',data});
       if (response.status == 0) {
         dispatch(COMPONENT_LOADER_AUM_DELETE_FOLIO_TXNS(null));
@@ -111,9 +109,9 @@ export const freezeFolios = createAsyncThunk(
 
 export const deleteReversals = createAsyncThunk(
   'searchSoa/deleteReversals',
-  async (_, { rejectWithValue }) => {
+  async (data, { rejectWithValue,dispatch }) => {
     try {
-      dispatch(COMPONENT_LOADER_AUM_DELETE_FOLIO_TXNS(param.componentForLoader));
+      dispatch(COMPONENT_LOADER_AUM_DELETE_FOLIO_TXNS(data.componentForLoader));
       const response = await axios({method:'POST',url:'/api/admin/deleteTxnReversals',data});
       if (response.status == 0) {
         dispatch(COMPONENT_LOADER_AUM_DELETE_FOLIO_TXNS(null));
@@ -129,9 +127,9 @@ export const deleteReversals = createAsyncThunk(
 );
 export const deleteTxn = createAsyncThunk(
   'searchSoa/deleteTxn',
-  async (_, { rejectWithValue }) => {
+  async (data, { rejectWithValue,dispatch }) => {
     try {
-      dispatch(COMPONENT_LOADER_DELETE_TXN(param.componentForLoader));
+      dispatch(COMPONENT_LOADER_DELETE_TXN(data.componentForLoader));
       const response = await axios({method:'POST',url:'/api/admin/txn/deleteTxn',data});
       if (response.status == 0) {
         dispatch(COMPONENT_LOADER_DELETE_TXN(null));
@@ -146,7 +144,7 @@ export const deleteTxn = createAsyncThunk(
   }
 );
 
-const userSlice = createSlice({
+const searchSoaSlice = createSlice({
   name: 'searchSoa',
   initialState,
   reducers: {
@@ -156,14 +154,24 @@ const userSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(getFolioData.pending, (state) => {
+      .addCase(getSearchFolioIdData.pending, (state) => {
         state.searchFolioNumData.apiStatus = 1
       })
-      .addCase(getFolioData.fulfilled, (state, action) => {
+      .addCase(getSearchFolioIdData.fulfilled, (state, action) => {
         state.searchFolioNumData = { data: action.payload, apiStatus: 0 }
       })
-      .addCase(getFolioData.rejected, (state, action) => {
+      .addCase(getSearchFolioIdData.rejected, (state, action) => {
         state.searchFolioNumData = { errorMsg: action.payload, apiStatus: -1};
+        state.loaderSearchFolio = false;
+      })
+      .addCase(getSearchSoaData.pending, (state) => {
+        state.searchFolioIdData.apiStatus = 1
+      })
+      .addCase(getSearchSoaData.fulfilled, (state, action) => {
+        state.searchFolioIdData = { data: action.payload, apiStatus: 0 }
+      })
+      .addCase(getSearchSoaData.rejected, (state, action) => {
+        state.searchFolioIdData = { errorMsg: action.payload, apiStatus: -1};
         state.loaderSearchFolio = false;
       })
 
@@ -235,4 +243,4 @@ const userSlice = createSlice({
 });
 
 // Export reducer
-export default userSlice.reducer;
+export default searchSoaSlice.reducer;

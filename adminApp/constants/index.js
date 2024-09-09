@@ -2189,55 +2189,55 @@ export const LEFT_SIDEBAR_TAB_OPTION ={'searchsoa': [
 'searchrejection': [
 ],
 'systemdata' :[
-    {label:'Funds & Schemes', url:'/admin/systemData/fundsAndSchemes', value:1001},
-    //{label:'FD & Other Assets',url:"/admin/systemData/fdAndOtherAssets",value:1002},
-    {label:'NSE, BSE, MFU Schemes',url:"/admin/systemData/completeSchemeDetails",value:1003},
-    {label:'Corporate Actions',url:"/admin/systemData/corporateActions",value:1004},
+    {label:'Funds & Schemes', url:'/systemData/fundsAndSchemes', value:1001},
+    //{label:'FD & Other Assets',url:"/systemData/fdAndOtherAssets",value:1002},
+    {label:'NSE, BSE, MFU Schemes',url:"/systemData/completeSchemeDetails",value:1003},
+    {label:'Corporate Actions',url:"/systemData/corporateActions",value:1004},
 ],
 'report' :[
 ],
 'settings' :[
-    {label:'Delete Broker', url:'/admin/settings/deleteBroker', value:1501}
+    {label:'Delete Broker', url:'/settings/deleteBroker', value:1501}
 ],
 'analytics' :[
-    {label:'One View Report', url:'/admin/report/oneViewReport', value:1301},
-    {label:'File Status', url:'/admin/analytics/fileStatus', value:1302},
-    {label:'Cron Info', url:'/admin/cronInfo', value:1303},
-    {label:'Cron History', url:'/admin/cronHistory', value:1304},
-    {label:'Cron Tab', url:'/admin/analytics/cronTab', value:1305},
-    { label: 'Mobile App Release Status', url: '/admin/analytics/mobileAppStatus', value: 1306 }
+    {label:'One View Report', url:'/report/oneViewReport', value:1301},
+    {label:'File Status', url:'/analytics/fileStatus', value:1302},
+    {label:'Cron Info', url:'/cronInfo', value:1303},
+    {label:'Cron History', url:'/cronHistory', value:1304},
+    {label:'Cron Tab', url:'/analytics/cronTab', value:1305},
+    { label: 'Mobile App Release Status', url: '/analytics/mobileAppStatus', value: 1306 }
 ],
 'dataManagement': [
-    {label:'Email Parsing Logs',url:"/admin/emailLog",value:2201},
-    {label:'SOA Download',url:"/admin/SOADownload",value:2202},
-    {label:'File Import History',url:"/admin/importHistory",value:2203}
+    {label:'Email Parsing Logs',url:"/emailLog",value:2201},
+    {label:'SOA Download',url:"/SOADownload",value:2202},
+    {label:'File Import History',url:"/importHistory",value:2203}
 ],
 'createCredential': [
-    {label:'API',url:"/admin/apiCredential",value:1801},
-    {label:'Sub User',url:"/admin/subUserCredential",value:1802},
+    {label:'API',url:"/apiCredential",value:1801},
+    {label:'Sub User',url:"/subUserCredential",value:1802},
 ],
 };
 
-export const LEFT_SIDEBAR_TAB_PANEL_LABEL ={'searchsoa':{label:'Search SOA',url:"/admin/searchSoa",value:100},
-    'searchrejection':{label:'Search Rejection',url:"/admin/searchRejection",value:200},
-    'aumreconcilation':{label:'AUM Reconciliation',url:"/admin/aumReconciliation",value:800},
+export const LEFT_SIDEBAR_TAB_PANEL_LABEL ={'searchsoa':{label:'Search SOA',url:"/searchSoa",value:100},
+    'searchrejection':{label:'Search Rejection',url:"/searchRejection",value:200},
+    'aumreconcilation':{label:'AUM Reconciliation',url:"/aumReconciliation",value:800},
     'systemdata':{label:'System Data',url:"javascript:void(0);",value:1000},
-    'ifalookup':{label:'IFA Lookup',url:"/admin/ifaLookup",value:300},
+    'ifalookup':{label:'IFA Lookup',url:"/ifaLookup",value:300},
     // 'duplicateTxn':{label:'Duplicate Transactions',url:"/admin/duplicateTxns",value:900},
-    'misMatch':{label:'Rejections',url:"/admin/mismatchRejections/transactionRejection",value:1100},
-    'handleException':{label:'Handle Exception',url:"/admin/handleException",value:1200},
+    'misMatch':{label:'Rejections',url:"/mismatchRejections/transactionRejection",value:1100},
+    'handleException':{label:'Handle Exception',url:"/handleException",value:1200},
     'analytics':{label:'Analytics',url:"javascript:void(0);",value:1300},
-    'arnMapping':{label:'ARN Mapping',url:"/admin/arnMapping",value:1400},
+    'arnMapping':{label:'ARN Mapping',url:"/arnMapping",value:1400},
     'settings':{label:'Settings',url:"javascript:void(0);",value:1500},
-    'taskManagement':{label:'Task Management',url:"/admin/taskManagement",value:1600},
-    'searchFolio':{label:'Search Folio',url:"/admin/searchFolio",value:1700},
-    'orders':{label:'Orders',url:"/admin/orders",value:2000},
-    // 'sipReconciliation':{label:'SIP Reconciliation',url:"/admin/sipReconciliation",value:2100},
+    'taskManagement':{label:'Task Management',url:"/taskManagement",value:1600},
+    'searchFolio':{label:'Search Folio',url:"/searchFolio",value:1700},
+    'orders':{label:'Orders',url:"/orders",value:2000},
+    // 'sipReconciliation':{label:'SIP Reconciliation',url:"/sipReconciliation",value:2100},
     'dataManagement':{label:'Data Management',url:"javascript:void(0);",value:2200},
-    'brokerageDataReport':{label:'Brokerage Data Report',url:"/admin/brokerageDataReport",value:2300},
-    'dataDeletionModule':{label:'Data Deletion Module',url:"/admin/dataDeletionModule",value:2400},
+    'brokerageDataReport':{label:'Brokerage Data Report',url:"/brokerageDataReport",value:2300},
+    'dataDeletionModule':{label:'Data Deletion Module',url:"/dataDeletionModule",value:2400},
     'createCredential':{label:'Create Credentials',url:"javascript:void(0);",value:1800},
-    'loginHistory' : {label:'Login History',url:"/admin/loginHistory",value:2500}
+    'loginHistory' : {label:'Login History',url:"/loginHistory",value:2500}
 }
 
 export const TABS_LIST_LABEL ={'ifasignup':{label:'IFA Sign Up',url:"javascript:void(0);",value:400},

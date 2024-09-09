@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom'
 import LineLoader from './lineLoader'
 import TableLoader from './tableLoader'
 

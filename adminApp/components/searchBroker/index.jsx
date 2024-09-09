@@ -1,6 +1,6 @@
 import React,{useState, useEffect, memo} from "react"
-import SearchFilter from 'app/uiCollection/shared/customSelect/searchFilterCnt'
-import {getBrokerList} from 'app/actions/admin/aumReconcilation'
+import SearchFilter from '../customSelect/searchFilterCnt'
+import {getBrokerList} from './searchBrokerSlice'
 import {connect} from 'react-redux'
 
 
@@ -38,7 +38,6 @@ const SearchBroker = (props) => {
     	setCrossBtns(true)
     }
 
-
 	return (
 		<React.Fragment>
 			<SearchFilter
@@ -53,7 +52,7 @@ const SearchBroker = (props) => {
                 showHideCrossBtns = { showHideCrossBtns }
                 removeSearchField = {(e, clickedOn)=> removeSearchField(e, clickedOn)}
                 onOptionSelection={(obj)=> onOptionSelection(obj) }
-                options={props.aumDeleteFoliosTxnsStore && props.aumDeleteFoliosTxnsStore.brokerListData}
+                options={props.brokerListData}
                 labelName = "domain"
                 valueName = "bid"
                 iconClass = {props.showSelectAsSearchFld ? "" : "genricFilter"}
@@ -73,7 +72,7 @@ const SearchBroker = (props) => {
 
 const mapStateToProps =(state)=> {
 	return {
-		aumDeleteFoliosTxnsStore: state.aumDeleteAllFoliosTxns,
+		brokerListData: state.broker && state.broker.brokerListData
 	}
 }
 
