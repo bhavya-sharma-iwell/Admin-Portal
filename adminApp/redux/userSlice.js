@@ -16,10 +16,10 @@ export const getUserData = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await axios({method:'GET',url:'/api/auth/getLoggedInUser',param:{}});
-      if (response.status === 200) {
-        return response.data.result; 
+      if (response.status == 0) {
+        return response.result; 
       } else {
-        return rejectWithValue(response.data.message);
+        return rejectWithValue(response.message);
       }
     } catch (err) {
       return rejectWithValue(err.message);

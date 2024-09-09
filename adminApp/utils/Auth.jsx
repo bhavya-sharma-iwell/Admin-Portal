@@ -6,12 +6,14 @@ import Loader from 'adminApp/components/loaders'
 import { LOADER_WIDTH } from 'adminApp/constants'
 import SessionData from 'adminApp/utils/sessionData'
 import { dependencyCheck } from 'adminApp/utils/dataFormater'
+import { getUserData } from '../redux/userSlice';
+
 class AuthenticateUser extends React.Component {
   logOutCheck=null
   constructor(props){
     super(props);
     if(Cookie.getCookie('c_ux')){
-      // this.props.dispatch(userAuthInfo.GetUserData());
+      this.props.dispatch(getUserData());
     }
     else {
       // props.dispatch(userAuthInfo.logout(this.logOutCheck));
@@ -77,26 +79,24 @@ class AuthenticateUser extends React.Component {
     }
     return true;
   }
-
   render() {
-
-    // if(this.props.user && this.props.user.uid){
-    //   if (this.checkUserRole()) {
-    //     return this.props.children;
-    //   } 
-    //   else {
-    //     return null
-    //   }
-    // }
-    // else{
-    //   return <span>
-    //   <Loader 
-    //   loaderType = 'line'
-    //   loaderWidth = { LOADER_WIDTH[2].width }
-    //   loaderHeight = { LOADER_WIDTH[2].height }
-    //   />
-    //   </span>
-    // }
+    if(this.props.user && this.props.user.uid){
+      if (this.checkUserRole()) {
+        return this.props.children;
+      } 
+      else {
+        return null
+      }
+    }
+    else{
+      return <span>
+      <Loader 
+      loaderType = 'line'
+      loaderWidth = { LOADER_WIDTH[2].width }
+      loaderHeight = { LOADER_WIDTH[2].height }
+      />
+      </span>
+    }
   }
 }
 
@@ -104,7 +104,7 @@ function mapStateToProps(state, ownProps) {
   return {
     // currentURL: ownProps.location&&ownProps.location.pathname,
     // lastApiCallTime: state.userReducer.lastApiCallTime,
-    // user:state.userReducer.user,
+    user:state.user && state.user.user,
     // userdata :state.userReducer,
     // ssoToken :state.userReducer && state.userReducer.SSOuser && state.userReducer.SSOuser.SSOToken,
     // sessionTimeOutFlag: state.dashboardReducer.sessionTimeOut,

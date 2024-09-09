@@ -8,7 +8,6 @@ const App = (props) => {
 
   return (
     <Fragment>
-      <Admin />
       {Cookie.getCookie('c_ux') && <AuthenticateUser onChange={p => SetPageTitle(p)}>
         <Admin />
       </AuthenticateUser>}
