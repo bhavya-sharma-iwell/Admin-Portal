@@ -11,7 +11,7 @@ import { USER_TYPE , DOCS_LOCATION_DOMAIN, INVESTWELL_LOGOS, INVESTWELL_CLOUD_IM
 import {CheckImageExists} from 'adminApp/utils/dataFormater'
 import SubscriptionInfo from 'adminApp/components/header/subscriptionInfo'
 import AdminInfoRoutes from '../routes'
-import getUserData from '../redux/userSlice'
+import {getUserData} from '../redux/userSlice'
 
 export class Admin extends Component{
     constructor(props){
@@ -28,10 +28,10 @@ export class Admin extends Component{
       cssLink.href =`/app/media/css/admin/admin.css?v=5`
     }
     componentDidMount(){
-        this.props.dispatch(getUserData())
-        if( (this.props.loginStore.user && this.props.loginStore.user.userType) != USER_TYPE.admin){
-            this.logoutUser()
-        }
+        // this.props.dispatch(getUserData())
+        // if( (this.props.loginStore.user && this.props.loginStore.user.userType) != USER_TYPE.admin){
+        //     this.logoutUser()
+        // }
     }
     logoutUser(clearIntervalLog){
         // this.props.dispatch(logout());
@@ -68,35 +68,35 @@ export class Admin extends Component{
               loadThemeCss : false
             })
           }
-        if(newProps.loginStore && newProps.loginStore.user && newProps.loginStore.user.userType && !sessionStorage.getItem('localUrl')){
-            if(sessionStorage.getItem('previousURLBeforeLogout')){
-                let previousURL = sessionStorage.getItem('previousURLBeforeLogout').replace(/"/g,"").split('#')[1]
-                  sessionStorage.removeItem('previousURLBeforeLogout');
-                window.location.href = '#' + previousURL
-            }else{
-                if(Cookie.getCookie('c_ux')){
-                    if(!sessionStorage.getItem('localUrl')){
-                        if((window.location.href.split('#')[1].split('/')[1] == 'login' )){
-                            window.location.href = '#/admin/ifaLookup'
-                        }
-                        else{
-                            window.location.href = '#'+window.location.href.split('#')[1]
-                        }
-                    }
-                }
-            }
-            sessionStorage.setItem('localUrl',true)
-            sessionStorage.removeItem('previousURLBeforeLogout')
-        } 
-        if(this.state.updateFabIcon && (this.props.loginStore && this.props.loginStore.user && this.props.loginStore.user.userType) ){
-            let favElement = document.getElementById("favicon");
-            let path = `${DOCS_LOCATION_DOMAIN}/${INVESTWELL_CLOUD_IMAGES}/${INVESTWELL_LOGOS}/${INVESTWELL_SMALL_LOGOS}/admin_Logo.ico`
-            this.setState({ updateFabIcon : false }, CheckImageExists(path,function(existsImage){
-              if(existsImage){
-                favElement.href=path
-              }
-            }))
-          }  
+        // if(newProps.loginStore && newProps.loginStore.user && newProps.loginStore.user.userType && !sessionStorage.getItem('localUrl')){
+        //     if(sessionStorage.getItem('previousURLBeforeLogout')){
+        //         let previousURL = sessionStorage.getItem('previousURLBeforeLogout').replace(/"/g,"").split('#')[1]
+        //           sessionStorage.removeItem('previousURLBeforeLogout');
+        //         window.location.href = '#' + previousURL
+        //     }else{
+        //         if(Cookie.getCookie('c_ux')){
+        //             if(!sessionStorage.getItem('localUrl')){
+        //                 if((window.location.href.split('#')[1].split('/')[1] == 'login' )){
+        //                     window.location.href = '#/admin/ifaLookup'
+        //                 }
+        //                 else{
+        //                     window.location.href = '#'+window.location.href.split('#')[1]
+        //                 }
+        //             }
+        //         }
+        //     }
+        //     sessionStorage.setItem('localUrl',true)
+        //     sessionStorage.removeItem('previousURLBeforeLogout')
+        // } 
+        // if(this.state.updateFabIcon && (this.props.loginStore && this.props.loginStore.user && this.props.loginStore.user.userType) ){
+        //     let favElement = document.getElementById("favicon");
+        //     let path = `${DOCS_LOCATION_DOMAIN}/${INVESTWELL_CLOUD_IMAGES}/${INVESTWELL_LOGOS}/${INVESTWELL_SMALL_LOGOS}/admin_Logo.ico`
+        //     this.setState({ updateFabIcon : false }, CheckImageExists(path,function(existsImage){
+        //       if(existsImage){
+        //         favElement.href=path
+        //       }
+        //     }))
+        //   }  
     }
     editProfile(){ }
 
@@ -112,7 +112,7 @@ export class Admin extends Component{
         return(
             <Fragment>
             <SubscriptionInfo
-                userInfo = {this.props.firstLoginInfo && this.props.firstLoginInfo.user}
+                // userInfo = {this.props.firstLoginInfo && this.props.firstLoginInfo.user}
                 metatitle = 'adminHeader'
             />
             <div class="main-body " >
@@ -129,11 +129,11 @@ export class Admin extends Component{
                 <SideBarLeft
                 
                     toggleFuntion = {(showHide)=> this.toggleFuntion(showHide)}
-                    selectedTab={this.state.parentTab || this.props.loginStore &&this.props.loginStore.setSelectedTab&&this.props.loginStore.setSelectedTab.parentTab}
-                    selectedSubTab = {this.props.loginStore &&this.props.loginStore.setSelectedTab&&this.props.loginStore.setSelectedTab.childTab}
+                    // selectedTab={this.state.parentTab || this.props.loginStore &&this.props.loginStore.setSelectedTab&&this.props.loginStore.setSelectedTab.parentTab}
+                    // selectedSubTab = {this.props.loginStore &&this.props.loginStore.setSelectedTab&&this.props.loginStore.setSelectedTab.childTab}
                     leftSidebarFlag={this.state.leftSidebarFlag}
                     openMainTabFlag = {this.state.openMainTabFlag}
-                    userInfo = {this.props.firstLoginInfo && this.props.firstLoginInfo.user}
+                    // userInfo = {this.props.firstLoginInfo && this.props.firstLoginInfo.user}
                 
                 >
                     
