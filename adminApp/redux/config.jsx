@@ -41,10 +41,11 @@ export const config = function(store){
 
 	axios.interceptors.request.use(function(config) {
 
-		if(config && config.url){
+		if(config.url){
 			config.url = config.url.replace('/api/', '/webapi/')
 		}
 		let userReducer = store.getState() && store.getState().user
+		let commonActionReducer = store.getState() && store.getState().commonActionReducer
 		let urlFounded = commonConst.URL_ARRAY.find((obj)=>{
 			if(config.url == obj.url){
 				return true
@@ -114,15 +115,15 @@ export const config = function(store){
 				}
 				if (config && config.params) {
 					if (config.params.getNewData) {
-						userReducer.refreshKey = moment()
-						refreshData(userReducer.refreshKey)
+						commonActionReducer.refreshKey = moment()
+						refreshData(commonActionReducer.refreshKey)
 					}
 					if (config.params.componentForLoader) {
 						delete config.params.componentForLoader
 					}
 				}
-				if(userReducer && userReducer.refreshKey){
-				   config.params['refreshKey'] = userReducer.refreshKey
+				if(commonActionReducer && commonActionReducer.refreshKey){
+				   config.params['refreshKey'] = commonActionReducer.refreshKey
 				}
 				else{
 					 refreshKey = SessionData.parseAndGetItem('moment')
@@ -131,17 +132,17 @@ export const config = function(store){
 					}	
 			}
 		}
-		let addViewActionType = userReducer && userReducer.addViewActionType || {}
+		let addViewActionType = commonActionReducer && commonActionReducer.addViewActionType || {}
 		if(config.method =="post"){
 			if (addViewActionType && addViewActionType.featureNo && addViewActionType.actionType) {
 				let authCheck = `{"featureTag":"${addViewActionType.featureNo}", "method":"${addViewActionType.actionType}"}`
 				config.headers['view-state'] = EncryptData(authCheck)
 			}
-			if(userReducer && userReducer.recaptchaToken){
+			if(commonActionReducer && commonActionReducer.recaptchaToken){
 				if(!config.data){
 					config.data={}
 				}
-				config.data["g-recaptcha-response"] = userReducer.recaptchaToken
+				config.data["g-recaptcha-response"] = commonActionReducer.recaptchaToken
 				setTimeout(()=>{store.dispatch({ type: "SAVE_RECAPTCHA_TOKEN", payload: null })}, 500 )
 			}
 			if (config.data && config.data.componentForLoader) {
