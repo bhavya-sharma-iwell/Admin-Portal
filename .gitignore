@@ -2,3 +2,4 @@ node_modules/*
 build/*
 app/media/.sass-cache/*
 .DS_Store
+adminAppBuild/*
