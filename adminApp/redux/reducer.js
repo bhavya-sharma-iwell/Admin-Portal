@@ -4,7 +4,7 @@ import commonReducer from './commonReducerSlice'
 import brokerReducer from '../components/searchBroker/searchBrokerSlice'
 import loaderReducer from './commonLoaderSlice';
 import searchSoaReducer from '../features/searchSoa/searchSoaSlice';
-import ifaLookupReducer from '../features/IFAOnBoarding/ifaLookupSlice';
+import logoutReducer from './logoutSlice'
 
 const reducer = combineReducers({
     user:userReducer,
@@ -12,7 +12,7 @@ const reducer = combineReducers({
     commonLoader:loaderReducer,
     broker: brokerReducer,
     searchSoa:searchSoaReducer,
-    ifaLookup:ifaLookupReducer
+    logout:logoutReducer,
 
 });
 

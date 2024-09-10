@@ -1,5 +1,6 @@
 import axios from 'axios'
 // import {logout} from '../../actions/user'
+import { loggedOutUser } from './logoutSlice'
 import SessionData from 'adminApp/utils/sessionData'
 import * as commonConst from 'adminApp/constants'
 import moment from 'moment'
@@ -173,8 +174,8 @@ export const config = function(store){
 		if(error.status==401 || error == errorStatus)
 		{
 			alert('Please clear your cookies/cache from browser, if you are facing trouble with the application')
-			store.dispatch(logout());
-			window.location = "#/login"
+			store.dispatch(loggedOutUser());
+			window.location = "/loginApp"
 			location.reload();
 		}
 

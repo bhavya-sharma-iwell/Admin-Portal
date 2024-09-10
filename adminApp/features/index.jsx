@@ -2,7 +2,7 @@ import React, {Component, Fragment} from 'react'
 import {connect} from 'react-redux'
 import SideBarLeft from 'adminApp/components/sidebar'
 import Profile from 'adminApp/components/header/userProfile'
-// import {GetUserTheme, logout, stillAlive, GetUserData} from 'app/actions/user'
+import { loggedOutUser } from '../redux/logoutSlice'
 import Loader from 'adminApp/components/loaders'
 import { LOADER_WIDTH } from 'adminApp/constants'
 import ErrorBoundary from 'adminApp/components/alert/errorBoundary'
@@ -28,13 +28,13 @@ export class Admin extends Component{
       cssLink.href =`/app/media/css/admin/admin.css?v=5`
     }
     componentDidMount(){
-        // this.props.dispatch(getUserData())
-        // if( (this.props.loginStore.user && this.props.loginStore.user.userType) != USER_TYPE.admin){
-        //     this.logoutUser()
-        // }
+        this.props.dispatch(getUserData())
+        if( (this.props.loginStore.user && this.props.loginStore.user.userType) != USER_TYPE.admin){
+            this.logoutUser()
+        }
     }
     logoutUser(clearIntervalLog){
-        // this.props.dispatch(logout());
+        this.props.dispatch(loggedOutUser())
         this.props.dispatch({type:'SESSION_TIMEOUT_FLAG', payload: false})
         clearInterval(clearIntervalLog)
         sessionStorage.clear();
@@ -68,36 +68,36 @@ export class Admin extends Component{
               loadThemeCss : false
             })
           }
-        // if(newProps.loginStore && newProps.loginStore.user && newProps.loginStore.user.userType && !sessionStorage.getItem('localUrl')){
-        //     if(sessionStorage.getItem('previousURLBeforeLogout')){
-        //         let previousURL = sessionStorage.getItem('previousURLBeforeLogout').replace(/"/g,"").split('#')[1]
-        //           sessionStorage.removeItem('previousURLBeforeLogout');
-        //         window.location.href = '#' + previousURL
-        //     }else{
-        //         if(Cookie.getCookie('c_ux')){
-        //             if(!sessionStorage.getItem('localUrl')){
-        //                 if((window.location.href.split('#')[1].split('/')[1] == 'login' )){
-        //                     window.location.href = '#/admin/ifaLookup'
-        //                 }
-        //                 else{
-        //                     window.location.href = '#'+window.location.href.split('#')[1]
-        //                 }
-        //             }
-        //         }
-        //     }
-        //     sessionStorage.setItem('localUrl',true)
-        //     sessionStorage.removeItem('previousURLBeforeLogout')
-        // } 
-        // if(this.state.updateFabIcon && (this.props.loginStore && this.props.loginStore.user && this.props.loginStore.user.userType) ){
-        //     let favElement = document.getElementById("favicon");
-        //     let path = `${DOCS_LOCATION_DOMAIN}/${INVESTWELL_CLOUD_IMAGES}/${INVESTWELL_LOGOS}/${INVESTWELL_SMALL_LOGOS}/admin_Logo.ico`
-        //     this.setState({ updateFabIcon : false }, CheckImageExists(path,function(existsImage){
-        //       if(existsImage){
-        //         favElement.href=path
-        //       }
-        //     }))
-        //   }  
-    }
+    //     if(newProps.loginStore && newProps.loginStore.user && newProps.loginStore.user.userType && !sessionStorage.getItem('localUrl')){
+    //         if(sessionStorage.getItem('previousURLBeforeLogout')){
+    //             let previousURL = sessionStorage.getItem('previousURLBeforeLogout').replace(/"/g,"").split('#')[1]
+    //               sessionStorage.removeItem('previousURLBeforeLogout');
+    //             window.location.href = '#' + previousURL
+    //         }else{
+    //             if(Cookie.getCookie('c_ux')){
+    //                 if(!sessionStorage.getItem('localUrl')){
+    //                     if((window.location.href.split('#')[1].split('/')[1] == 'login' )){
+    //                         window.location.href = '#/admin/ifaLookup'
+    //                     }
+    //                     else{
+    //                         window.location.href = '#'+window.location.href.split('#')[1]
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //         sessionStorage.setItem('localUrl',true)
+    //         sessionStorage.removeItem('previousURLBeforeLogout')
+    //     } 
+    //     if(this.state.updateFabIcon && (this.props.loginStore && this.props.loginStore.user && this.props.loginStore.user.userType) ){
+    //         let favElement = document.getElementById("favicon");
+    //         let path = `${DOCS_LOCATION_DOMAIN}/${INVESTWELL_CLOUD_IMAGES}/${INVESTWELL_LOGOS}/${INVESTWELL_SMALL_LOGOS}/admin_Logo.ico`
+    //         this.setState({ updateFabIcon : false }, CheckImageExists(path,function(existsImage){
+    //           if(existsImage){
+    //             favElement.href=path
+    //           }
+    //         }))
+    //       }  
+    // }
     editProfile(){ }
 
     render(){
@@ -112,7 +112,7 @@ export class Admin extends Component{
         return(
             <Fragment>
             <SubscriptionInfo
-                // userInfo = {this.props.firstLoginInfo && this.props.firstLoginInfo.user}
+                userInfo = {this.props.firstLoginInfo && this.props.firstLoginInfo.user}
                 metatitle = 'adminHeader'
             />
             <div class="main-body " >
@@ -129,11 +129,11 @@ export class Admin extends Component{
                 <SideBarLeft
                 
                     toggleFuntion = {(showHide)=> this.toggleFuntion(showHide)}
-                    // selectedTab={this.state.parentTab || this.props.loginStore &&this.props.loginStore.setSelectedTab&&this.props.loginStore.setSelectedTab.parentTab}
-                    // selectedSubTab = {this.props.loginStore &&this.props.loginStore.setSelectedTab&&this.props.loginStore.setSelectedTab.childTab}
+                    selectedTab={this.state.parentTab || this.props.loginStore &&this.props.loginStore.setSelectedTab&&this.props.loginStore.setSelectedTab.parentTab}
+                    selectedSubTab = {this.props.loginStore &&this.props.loginStore.setSelectedTab&&this.props.loginStore.setSelectedTab.childTab}
                     leftSidebarFlag={this.state.leftSidebarFlag}
                     openMainTabFlag = {this.state.openMainTabFlag}
-                    // userInfo = {this.props.firstLoginInfo && this.props.firstLoginInfo.user}
+                    userInfo = {this.props.firstLoginInfo && this.props.firstLoginInfo.user}
                 
                 >
                     
@@ -150,6 +150,7 @@ export class Admin extends Component{
                     </Profile>
                     
                     <div class="right-main-box">
+                    {/* <h2>Welcome to Investwell Admin Panel !!! </h2> */}
                         <AdminInfoRoutes/>
                     </div>
                 </div>
@@ -168,4 +169,7 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps,) (Admin);
+const mapDispatchToProps = (dispatch) =>{
+    return {dispatch}
+}
+export default connect(mapStateToProps,mapDispatchToProps) (Admin);
