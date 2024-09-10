@@ -71,7 +71,7 @@ class SearchSoa extends Component{
             {key:'Domain',value:'domain'},
             {key:'Actions',value:'actions', styleClass:'right-align', buttonInfo: {labelName: 'Delete', buttonClassName: 'buttonInTable'}, metatitle:'adminSearchSoaTableDeleteButton'}
             ]
-            let tableDataInner =  newProps.soaFolioIdData&& newProps.soaFolioIdData.data&&newProps.soaFolioIdData.data.data
+            let tableDataInner =  newProps.soaFolioIdData&& newProps.soaFolioIdData.data&&newProps.soaFolioIdData.data
             this.setState({
                 tableCustomDataInner,
                 tableDataInner,
@@ -333,7 +333,6 @@ class SearchSoa extends Component{
         this.props.dispatch({type:"FOLIOS_UNFREEZE_SUCCESFULLY", payload: null})
 
     }
-
     render(){
         let folioDetails = this.props.soaFolioIdData&& this.props.soaFolioIdData.data
         this.selectBoxOptsFunction(this.state.tableData, this.state.tableCustomData)
@@ -431,10 +430,10 @@ class SearchSoa extends Component{
                     loaderRows = { this.props.pageSize || 20 }
                     loaderPagination = { 5 }
                     />}
-               {(this.state.tableData && this.state.folioNumber) && <Table tableClass="tableBox"
+               {(this.props.soaFolioIdData && this.props.soaFolioIdData.data && this.state.folioNumber) && <Table tableClass="tableBox"
                 tdSpanClass="txtLimit"
                 tableCustomData={this.state.tableCustomData} 
-                tableData={this.state.tableData}
+                tableData={this.props.soaFolioIdData.data && this.props.soaFolioIdData.data.data || []}
                 tableTDClick = {{'4': (obj)=> this.folioIdData(obj) }}
                 selectAll = {()=> this.selectAll()}
                 unSelectAll = {()=> this.unSelectAll()}

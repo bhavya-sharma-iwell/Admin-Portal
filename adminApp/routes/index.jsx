@@ -3,6 +3,7 @@ import { BrowserRouter,Route, Routes } from "react-router-dom"
 import { useDispatch } from 'react-redux';
 import { getUserData } from '../redux/userSlice';
 import SearchSoa from '../features/searchSoa';
+import IFAOnBoarding from '../features/IFAOnBoarding'
 // import Loader from 'app/components/loaders'
 // import { USER_TYPE } from 'app/constants'
 // import { LOADER_WIDTH } from 'app/constants/shared/commonConst'
@@ -176,6 +177,7 @@ const AdminInfoRoutes =  () =>{
         <Routes>
             <Route path="/adminApp/about" element={<About />} />
             <Route path="/searchSoa" element={<SearchSoa />} />
+            <Route path="/ifaLookup" element={<IFAOnBoarding />} />
         </Routes>
       </BrowserRouter>
   )

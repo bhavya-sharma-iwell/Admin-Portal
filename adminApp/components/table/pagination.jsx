@@ -138,8 +138,8 @@ export class Pagination extends React.Component{
 }
 const mapStateToProp = (state) =>{
   return {
-    theme: state.userReducer.theme,
-    user:state.userReducer.user
+    theme: state.user.theme,
+    user:state.user.user
   }
 }
 const mapDispatchToProp = (dispatch) => {

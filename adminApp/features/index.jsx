@@ -150,7 +150,6 @@ export class Admin extends Component{
                     </Profile>
                     
                     <div class="right-main-box">
-                    <h2>Welcome to Investwell Admin Panel !!! </h2>
                         <AdminInfoRoutes/>
                     </div>
                 </div>

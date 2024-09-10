@@ -1,5 +1,5 @@
 import React,{Component} from 'react'
-import { closePopupWithESCKey } from 'app/utils/eventHandler'
+import { closePopupWithESCKey } from '../../utils/eventHandler'
 
 export class TxnPopup extends Component{
 	constructor(props){

@@ -1037,7 +1037,7 @@ Table.defaultProps = { sortingInfo: {} }
 const mapStateToProp =(state)=>{
   return{
     pageSize: state.user.theme && state.user.theme.pageSize,
-    tableLoader: state.loader.tableLoader,
+    tableLoader: state.loader && state.loader.tableLoader,
     addViewActionType: state.user && state.user.addViewActionType, 
     maskDataFlag :  state.Login && state.Login.maskClientData
   }
